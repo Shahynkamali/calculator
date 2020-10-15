@@ -1,0 +1,111 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.101.1/containers/docker-existing-dockerfile
+{
+  "name": "Existing Dockerfile",
+  // Sets the run context to one level up instead of the .devcontainer folder.
+  "context": "..",
+  // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+  "dockerFile": "Dockerfile",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    // EDITOR
+    // ----------------------------------------
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "[javascript]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+    "[typescript]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+    "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+    "[scss]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+    "[css]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+    "prettier.requireConfig": true,
+    "editor.codeActionsOnSave": {
+      // https://github.com/microsoft/vscode-eslint/blob/master/README.md#release-notes
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true
+    },
+
+    // ESLINT
+    // ----------------------------------------
+    "eslint.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.options": {
+      "extensions": [".html", ".js", ".ts", ".vue"]
+    },
+
+    // VETUR
+    // Disable rules if user has extension installed and enabled.
+    // ----------------------------------------
+    "vetur.validation.template": false,
+    "vetur.validation.style": false,
+    "vetur.format.defaultFormatter.html": "none",
+    "vetur.format.defaultFormatter.css": "none",
+    "vetur.format.defaultFormatter.scss": "none",
+    "vetur.format.defaultFormatter.js": "none",
+    "vetur.format.defaultFormatter.ts": "none",
+
+    // STYLELINT
+    // ----------------------------------------
+    "stylelint.enable": true,
+    "css.validate": true,
+    "scss.validate": true,
+
+    // HTML
+    // ----------------------------------------
+    "html.format.enable": false,
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+      "vue-html": "html"
+    },
+
+    // FILES
+    // ----------------------------------------
+    "files.exclude": {
+      "**/*.log": true,
+      "**/*.log*": true,
+      "**/dist": true
+    },
+    "files.associations": {
+      ".babelrc": "jsonc",
+      ".eslintrc": "jsonc",
+      ".markdownlintrc": "jsonc",
+      "*.config.js": "javascript",
+      "*.spec.js": "javascript",
+      "*.vue": "vue"
+    },
+    // The default end of line character. Use \n for LF and \r\n for CRLF.
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "octref.vetur",
+    "mikestead.dotenv",
+    "editorconfig.editorconfig",
+    "stylelint.vscode-stylelint",
+    "jcbuisson.vue",
+    "drknoxy.eslint-disable-snippets",
+    "wooodhead.disable-eslint-rule",
+    "dbaeumer.vscode-eslint",
+    "mhmadhamster.postcss-language",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "mubaidr.vuejs-extension-pack",
+    "dbaeumer.vscode-eslint",
+    "eg2.vscode-npm-script",
+    "ms-vsliveshare.vsliveshare",
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8080],
+  // Uncomment the next line to run commands after the container is created - for example installing git.
+
+  // "postCreateCommand": "git config --global core.autocrlf input && git config --global core.safecrlf false && mkdir -p /root/.ssh && cp /root/ssh/* /root/.ssh/ && chmod 600 /root/.ssh/*",
+  "postCreateCommand": "git config --global core.autocrlf input && git config --global core.safecrlf false",
+
+  // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+  // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+  // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-in-docker.
+  // "mounts": ["source=${localEnv:USERPROFILE}/.ssh,target=/root/ssh,type=bind"]
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  // "remoteUser": "vscode"
+}
